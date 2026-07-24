@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wamsgoat — Gaming Peripheral Reviews</title>
+  <title>Wamsgoat — Mousepad Reviews</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -47,24 +47,13 @@
     .logo { font-family: var(--font-display); font-size: 1.15rem; color: var(--pink); }
     nav ul { list-style: none; display: flex; gap: 28px; font-size: 0.9rem; font-weight: 500; }
     nav a { color: var(--muted); transition: color 0.2s ease; }
-    nav a:hover { color: var(--pink); }
+    nav a:hover, nav a.active { color: var(--pink); }
 
     /* Hero */
     .hero { padding: 40px 0 32px; border-bottom: 1px solid var(--line); }
     h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.05; margin-bottom: 16px; }
     h1 .accent { color: var(--pink); }
     p.lede { font-size: 1.05rem; color: var(--muted); max-width: 46ch; margin-bottom: 20px; }
-
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      font-family: var(--font-mono); font-size: 0.82rem; padding: 10px 18px;
-      border-radius: 4px; font-weight: 500; transition: all 0.2s ease;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary { background: var(--pink); color: #2a1418; }
-    .btn-primary:hover { transform: translateY(-2px); background: #f8c9d8; }
-    .btn-ghost { border: 1px solid var(--line); color: var(--text); }
-    .btn-ghost:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-2px); }
 
     /* Sections & Cards */
     .section { padding: 32px 0; }
@@ -79,6 +68,14 @@
     .tag.alt { background: var(--pink); }
     .featured h3 { font-family: var(--font-display); font-size: 1.4rem; margin: 8px 0; }
     .featured p { color: var(--muted); margin-bottom: 16px; }
+
+    .btn {
+      font-family: var(--font-mono); font-size: 0.82rem; padding: 10px 18px;
+      border-radius: 4px; font-weight: 500; transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary { background: var(--pink); color: #2a1418; }
+    .btn-primary:hover { transform: translateY(-2px); background: #f8c9d8; }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .card {
@@ -104,7 +101,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Mice</a></li>
-        <li><a href="mousepads.html">Mousepads</a></li>
+        <li><a href="mousepads.html" class="active">Mousepads</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </nav>
@@ -113,31 +110,12 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1>The guy<br>between you and the<br><span class="accent">perfect mouse.</span></h1>
-    <p class="lede">Long-term reviews of mice and pads.<br><br>No undisclosed sponsors. No bullshit.</p>
-    <div class="hero-actions">
-      <a href="#latest" class="btn btn-primary">Read latest review</a>
-      <a href="#" class="btn btn-ghost">Browse by category</a>
-    </div>
+    <h1>Surface control,<br>speed and <span class="accent">hybrid pads.</span></h1>
+    <p class="lede">Long-term testing of cloth, glass, and hybrid surfaces.<br><br>No undisclosed sponsors. No bullshit.</p>
   </div>
 </section>
 
 <main class="wrap">
-  <section class="section" id="latest">
-    <div class="section-head">
-      <h2>Featured Mouse</h2>
-    </div>
-    <article class="featured">
-      <div>
-        <span class="tag">MOUSE</span>
-        <span class="tag alt">WIRELESS</span>
-      </div>
-      <h3>Hitscan Hyperlight - The BEST 3395 mouse</h3>
-      <p>The perfect lightweight, flat sided, symmetrical gaming mouse.<br><br>But will the refresh be the same?</p>
-      <a href="#" class="btn btn-primary">Read full review</a>
-    </article>
-  </section>
-
   <section class="section">
     <div class="section-head">
       <h2>Featured Mousepad</h2>
@@ -147,28 +125,35 @@
         <span class="tag">MOUSEPAD</span>
         <span class="tag alt">SPEED</span>
       </div>
-      <h3>PMM S2P 2.0 - The perfect cloth pad for glass lovers.</h3>
-      <p>The perfect lightweight, flat sided, symmetrical gaming mouse.<br><br>But will the refresh be the same?</p>
+      <h3>The Masterpiece Vortex v1 - Smooth hybrid surface</h3>
+      <p>Glass-infused polyester weave with a soft Poron base.<br><br>The perfect balance between low dynamic friction and stopping power.</p>
       <a href="#" class="btn btn-primary">Read full review</a>
     </article>
   </section>
 
   <section class="section">
     <div class="section-head">
-      <h2>Recent hating</h2>
+      <h2>Recent Mousepad Reviews</h2>
     </div>
     <div class="grid">
       <article class="card">
-        <div><span class="tag">dwarf</span></div>
-        <h3>Jomp</h3>
-        <p>bit silly</p>
+        <div><span class="tag alt">CONTROL</span></div>
+        <h3>Artisan Zero XSOFT XL</h3>
+        <p>The gold standard for tactical shooters. Plush Japanese PORON base with high stopping control.</p>
         <a href="#" class="card-read">Read review &rarr;</a>
       </article>
 
       <article class="card">
-        <div><span class="tag alt">dwarf</span></div>
-        <h3>Escaroth</h3>
-        <p>unemployed and still bad at Geog</p>
+        <div><span class="tag">HYBRID</span></div>
+        <h3>Lethal Gaming Saturn Pro</h3>
+        <p>Ultra-smooth micro-weave with custom firmness options.</p>
+        <a href="#" class="card-read">Read review &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div><span class="tag alt">GLASS</span></div>
+        <h3>Skypad 3.0 XL</h3>
+        <p>Zero friction glass surface for maximum speed aimers.</p>
         <a href="#" class="card-read">Read review &rarr;</a>
       </article>
     </div>
@@ -178,7 +163,7 @@
 <footer>
   <div class="wrap footer-inner">
     <span>© 2026 Wamsgoat.</span>
-    <span><a href="#">Contact</a> · <a href="#">Archive</a></span>
+    <span><a href="index.html">Back to Home</a> · <a href="#">Contact</a></span>
   </div>
 </footer>
 
