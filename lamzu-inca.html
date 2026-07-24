@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lamzu Inca Review — Wamsgoat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0d0d0d;
+      --bg-surface: #1a1a1a;
+      --line: #333333;
+      --pink: #f4b8ca;
+      --pink-dim: #a97e88;
+      --text: #ededed;
+      --muted: #969696;
+      --font-display: 'Archivo Black', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(244, 184, 202, 0.05), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(150, 150, 150, 0.04), transparent 45%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--pink);
+      color: var(--bg-deep);
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(18, 16, 14, 0.85);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--pink);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--pink);
+    }
+
+    /* Back Link & Review Header */
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--pink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--bg-deep);
+      background: var(--muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag.alt {
+      background: var(--pink);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .meta-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .meta-box span b {
+      color: var(--text);
+    }
+
+    /* Review Article Content */
+    .review-content {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .review-content p {
+      margin-bottom: 18px;
+    }
+
+    .review-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin: 32px 0 12px;
+      color: var(--pink);
+    }
+
+    .score-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .score-title {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--pink);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .tools-list {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .tools-list ul {
+      list-style: square;
+      padding-left: 20px;
+      margin-top: 8px;
+      color: var(--text);
+    }
+
+    .summary-box {
+      background: rgba(244, 184, 202, 0.06);
+      border: 1px solid var(--pink-dim);
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 36px;
+    }
+
+    .summary-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .footer-inner a:hover {
+      color: var(--pink);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">WAMSGOAT</a>
+      <nav>
+        <ul>
+          <li><a href="mice.html" class="active">Mice</a></li>
+          <li><a href="mousepads.html">Mousepads</a></li>
+          <li><a href="accessories.html">Accessories</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a href="mice.html" class="back-link">&larr; Back to Mice Reviews</a>
+
+    <article>
+      <div>
+        <span class="tag">MOUSE</span>
+        <span class="tag alt">WIRELESS</span>
+      </div>
+
+      <h1>Lamzu Inca Review</h1>
+
+      <div class="meta-box">
+        <span>Hand Size Reference: <b>19x10</b></span>
+        <span>Sensor: <b>PixArt 3950</b></span>
+        <span>Switches: <b>Omron Opticals</b></span>
+      </div>
+
+      <div class="review-content">
+        <p>I bought the Inca after buying the ZA13-DW and returning it due to the weight. I loved the shape and looked for something similar.</p>
+
+        <div class="tools-list">
+          In the box:
+          <ul>
+            <li>Mouse</li>
+            <li>Receiver</li>
+            <li>Cable</li>
+            <li>Spare skates</li>
+            <li>“Velvet” bag</li>
+            <li>Grip tape</li>
+          </ul>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>Shape</span>
+            <span>10 / 10</span>
+          </div>
+          <p>The shape is extremely similar to the Zowie ZA13, with sub-millimetre differences in the length and width, but in hand feel near identical.</p>
+          <p style="margin-bottom: 0;">The aggressive rear hump of the Inca and ZA13 support the palm nicely. This is one of the best claw grip shapes in my opinion.</p>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>Clicks</span>
+            <span>7 / 10</span>
+          </div>
+          <p>The Inca uses Omron opticals and feel very nice. The implementation is superb, with a nice crisp feel and sound. And very little pre and post travel.</p>
+          <p>The side buttons on the Inca are nothing to write home about. They are very light and easy to press, but come at the cost of feeling kind of cheap and inconsistent feeling.</p>
+          <p style="margin-bottom: 0;">The middle click feels and sounds quite nice. However, I find it hard to press than other mice I have used. Making it not very nice to use in games that require it.</p>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>QC</span>
+            <span>10 / 10</span>
+          </div>
+          <p>The QC on my unit is downright incredible. Very minimal button wobble.</p>
+          <p>Super flat base.</p>
+          <p style="margin-bottom: 0;">Solid feeling all around even whilst trying to squeeze and find creaky spots.</p>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>Coating</span>
+            <span>8 / 10</span>
+          </div>
+          <p>I absolutely love the coating on this mouse. It feels like nothing else in my collection. Nice and smooth but stays grippy even when I am in a sweaty game of Rivals.</p>
+          <p style="margin-bottom: 0;">Not as nice as the coatings on the OP1 or Hitscan Hyperlight. But still very usable.</p>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>Skates</span>
+            <span>8 / 10</span>
+          </div>
+          <p style="margin-bottom: 0;">The stock skates were fantastic, as is usually the case with Lamzu mice. Nice and smooth with rounded edges. I did swap them out for dots though after the first day as I do with all my mice.</p>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>Performance</span>
+            <span>10 / 10</span>
+          </div>
+          <p style="margin-bottom: 0;">Lamzu consistently have great performance across their mice. And the Inca is no different. With a good 3950 implementation and no wireless problems at all. There is just nothing to talk about with the performance, it just works.</p>
+        </div>
+
+        <div class="score-block">
+          <div class="score-title">
+            <span>Software</span>
+            <span>9 / 10</span>
+          </div>
+          <p>Lamzu have some of the easiest and most understandable software I have used. It’s a super simple web driver.</p>
+          <p style="margin-bottom: 0;">It may not be as feature rich as the Mchose web hub or other brands but it just works and that’s all I have to ask from it.</p>
+        </div>
+
+        <div class="summary-box">
+          <h3>Conclusion</h3>
+          <p style="margin-bottom: 0;">If you are looking for a ZA13 alternative at a lighter weight and with nice clicks and software. The Lamzu Inca feels like a no brainer. Love this mouse and it will stay in my collection for a while.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Wamsgoat.</span>
+      <span><a href="mice.html">Back to Mice</a> · <a href="index.html">Home</a></span>
+    </div>
+  </footer>
+
+</body>
+
+</html>
