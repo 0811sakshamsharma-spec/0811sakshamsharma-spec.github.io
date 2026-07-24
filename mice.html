@@ -59,15 +59,21 @@
     .section { padding: 32px 0; }
     .section-head h2 { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.02em; word-spacing: 0.05em; margin-bottom: 16px; }
 
-    .featured { background: var(--bg-surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px 32px; }
+    .featured {
+      background: var(--bg-surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px 32px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: pointer;
+    }
+    a.featured:hover { border-color: var(--pink); transform: translateY(-4px); box-shadow: 0 6px 20px rgba(244, 184, 202, 0.15); }
+    a.featured:hover h3 { color: var(--pink); }
     .tag {
       display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
       letter-spacing: 0.06em; color: var(--bg-deep); background: var(--muted);
       padding: 3px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 8px;
     }
     .tag.alt { background: var(--pink); }
-    .featured h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.015em; word-spacing: 0.04em; margin: 8px 0; }
-    .featured p { color: var(--muted); margin-bottom: 16px; }
+    .featured h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.015em; word-spacing: 0.04em; margin: 8px 0; transition: color 0.2s ease; }
+    .featured p { color: var(--muted); margin-bottom: 0; }
 
     .btn {
       font-family: var(--font-mono); font-size: 0.82rem; padding: 10px 18px;
@@ -80,11 +86,13 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .card {
       background: var(--bg-surface); border: 1px solid var(--line); border-radius: 10px;
-      padding: 20px; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 20px; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none; color: inherit; cursor: pointer;
     }
-    .card:hover { border-color: var(--pink-dim); transform: translateY(-3px); }
-    .card h3 { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.015em; word-spacing: 0.04em; margin: 8px 0 6px; }
-    .card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; flex: 1; }
+    a.card:hover { border-color: var(--pink); transform: translateY(-4px); box-shadow: 0 6px 20px rgba(244, 184, 202, 0.15); }
+    a.card:hover h3 { color: var(--pink); }
+    .card h3 { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.015em; word-spacing: 0.04em; margin: 8px 0 6px; transition: color 0.2s ease; }
+    .card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 0; flex: 1; }
     .card-read { font-family: var(--font-mono); font-size: 0.78rem; color: var(--pink); }
 
     /* Footer */
@@ -103,7 +111,7 @@
         <li><a href="mice.html" class="active">Mice</a></li>
         <li><a href="mousepads.html">Mousepads</a></li>
         <li><a href="accessories.html">Accessories</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </nav>
   </div>
@@ -136,26 +144,23 @@
       <h2>Recent Mice Reviews</h2>
     </div>
     <div class="grid">
-      <article class="card">
+      <a href="atk-u2-pro.html" class="card">
         <div><span class="tag alt">ZOWIE U2 CLONE</span></div>
         <h3>ATK U2 Pro</h3>
         <p>Great budget Zowie U2 alternative with Huano Ice Berry switches and smooth grippy coating.</p>
-        <a href="atk-u2-pro.html" class="card-read">Read review &rarr;</a>
-      </article>
+      </a>
 
-      <article class="card">
+      <a href="lamzu-inca.html" class="card">
         <div><span class="tag alt">ZA13 ALTERNATIVE</span></div>
         <h3>Lamzu Inca</h3>
         <p>Ultra-lightweight claw grip shape with 3950 sensor and Omron optical switches.</p>
-        <a href="lamzu-inca.html" class="card-read">Read review &rarr;</a>
-      </article>
+      </a>
 
-      <article class="card">
+      <a href="pmm-zen-8k-mini.html" class="card">
         <div><span class="tag alt">3D PRINTED</span></div>
         <h3>PMM Zen 8k Mini</h3>
         <p>31g custom mod kit for the Viper v3 pro. Phenomenal lightweight shape tested in Marvel Rivals, R6 & CSGO.</p>
-        <a href="pmm-zen-8k-mini.html" class="card-read">Read review &rarr;</a>
-      </article>
+      </a>
     </div>
   </section>
 
@@ -164,35 +169,32 @@
       <h2>All Reviews</h2>
     </div>
     <div class="grid">
-      <article class="featured">
+      <a href="atk-u2-pro.html" class="featured">
         <div>
           <span class="tag">MOUSE</span>
           <span class="tag alt">ZOWIE U2 CLONE</span>
         </div>
         <h3>ATK U2 Pro — Great Budget U2 Alternative</h3>
         <p>Tactile Huano Ice Berry switches, wide thumb-hugging shape, smooth coating, and web software.<br><br>The best budget claw grip option for Zowie U2 lovers.</p>
-        <a href="atk-u2-pro.html" class="btn btn-primary">Read full review</a>
-      </article>
+      </a>
 
-      <article class="featured">
+      <a href="lamzu-inca.html" class="featured">
         <div>
           <span class="tag">MOUSE</span>
           <span class="tag alt">ZA13 ALTERNATIVE</span>
         </div>
         <h3>Lamzu Inca — Lightweight ZA13 Alternative</h3>
         <p>Omron optical switches, sub-millimetre ZA13 shape replica, 3950 sensor, and rock-solid build quality.<br><br>The best lightweight claw grip alternative for Zowie lovers.</p>
-        <a href="lamzu-inca.html" class="btn btn-primary">Read full review</a>
-      </article>
+      </a>
 
-      <article class="featured">
+      <a href="pmm-zen-8k-mini.html" class="featured">
         <div>
           <span class="tag">MOUSE</span>
           <span class="tag alt">3D PRINTED</span>
         </div>
         <h3>PMM Zen 8k Mini — 31g Featherweight Mod</h3>
         <p>31g custom mod kit for the Viper v3 pro. Phenomenal lightweight shape tested in Marvel Rivals, R6 & CSGO.<br><br>Unmatched agility with carbon fiber reinforcement.</p>
-        <a href="pmm-zen-8k-mini.html" class="btn btn-primary">Read full review</a>
-      </article>
+      </a>
     </div>
   </section>
 </main>
