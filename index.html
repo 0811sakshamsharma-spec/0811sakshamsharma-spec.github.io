@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wamsgoat — Gaming Peripheral Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0d0d0d;
+    --bg-surface:#1a1a1a;
+    --bg-raised:#232323;
+    --line:#333333;
+    --copper:#f4b8ca;
+    --copper-dim:#a97e88;
+    --teal:#c9c9c9;
+    --text:#ededed;
+    --text-muted:#969696;
+    --font-display:'Archivo Black', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg-deep);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.55;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(217,138,61,0.06), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(79,182,168,0.05), transparent 45%);
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--copper); color:var(--bg-deep); }
+
+  :focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(10px);
+    background:rgba(18,16,14,0.85);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 32px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+    color:var(--copper);
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:32px;
+    font-size:0.9rem;
+    font-weight:500;
+  }
+  nav a{
+    color:var(--text-muted);
+    transition:color 0.2s ease;
+    position:relative;
+  }
+  nav a:hover{ color:var(--text); }
+  .nav-toggle{ display:none; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 80px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    max-width:640px;
+  }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--teal);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px; height:8px;
+    background:var(--teal);
+    border-radius:50%;
+    box-shadow:0 0 8px var(--teal);
+    animation:pulse 2s infinite ease-in-out;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.35; }
+  }
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem, 5vw, 4rem);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  h1 .accent{ color:var(--copper); }
+  .hero p.lede{
+    font-size:1.1rem;
+    color:var(--text-muted);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    padding:13px 22px;
+    border-radius:4px;
+    font-weight:500;
+    letter-spacing:0.02em;
+    transition:transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--copper);
+    color:#2a1418;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); background:#f8c9d8; }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); }
+
+  /* switch cross-section illustration */
+  .switch-diagram{
+    display:flex;
+    justify-content:center;
+  }
+  .switch-diagram svg{ width:100%; max-width:320px; height:auto; }
+
+  /* ---------- ticker ---------- */
+  .ticker{
+    border-bottom:1px solid var(--line);
+    background:var(--bg-surface);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:10px 0;
+  }
+  .ticker-track{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--text-muted);
+    animation:scroll 28s linear infinite;
+  }
+  .ticker-track span{ margin-right:48px; }
+  .ticker-track span b{ color:var(--copper); font-weight:600; }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- section headings ---------- */
+  .section{ padding:80px 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:40px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:var(--font-display);
+    font-size:1.6rem;
+  }
+  .section-head p{
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    color:var(--text-muted);
+  }
+
+  /* ---------- featured review ---------- */
+  .featured{
+    background:var(--bg-surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .featured-body{ padding:40px; }
+  .kc-tag{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    color:var(--bg-deep);
+    background:var(--teal);
+    padding:4px 9px;
+    border-radius:5px;
+    box-shadow:0 2px 0 rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    margin-right:8px;
+    margin-bottom:8px;
+  }
+  .kc-tag.alt{ background:var(--copper); }
+  .featured-body h3{
+    font-family:var(--font-display);
+    font-size:1.6rem;
+    margin:16px 0 12px;
+  }
+  .featured-body p{
+    color:var(--text-muted);
+    margin-bottom:24px;
+  }
+  .meter-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:10px;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+  }
+  .meter-label{ width:110px; color:var(--text-muted); flex-shrink:0; }
+  .meter-track{
+    flex:1;
+    height:6px;
+    background:var(--bg-deep);
+    border-radius:3px;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .meter-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--copper), var(--teal));
+    border-radius:3px;
+  }
+  .meter-val{ width:34px; text-align:right; color:var(--text); }
+  .featured-footer{
+    margin-top:28px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .score-badge{
+    font-family:var(--font-display);
+    font-size:1.8rem;
+    color:var(--copper);
+    border:2px solid var(--copper-dim);
+    border-radius:8px;
+    width:64px; height:64px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+
+  /* ---------- review grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .card{
+    background:var(--bg-surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover{ border-color:var(--copper-dim); transform:translateY(-3px); }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:16px;
+  }
+  .card-score{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    color:var(--teal);
+    border:1px solid var(--line);
+    padding:3px 8px;
+    border-radius:5px;
+  }
+  .card h3{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    line-height:1.3;
+    margin-bottom:10px;
+  }
+  .card p{
+    color:var(--text-muted);
+    font-size:0.92rem;
+    margin-bottom:18px;
+    flex:1;
+  }
+  .card-tags{ margin-bottom:4px; }
+  .card-read{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--copper);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:auto;
+  }
+  .card-read svg{ width:12px; height:12px; transition:transform 0.2s ease; }
+  .card:hover .card-read svg{ transform:translateX(3px); }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--text-muted);
+  }
+  .footer-inner a:hover{ color:var(--copper); }
+
+  @media (max-width:860px){
+    .featured{ grid-template-columns:1fr; }
+    .grid{ grid-template-columns:1fr 1fr; }
+    nav ul{ display:none; }
+  }
+  @media (max-width:560px){
+    .wrap{ padding:0 20px; }
+    .grid{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span>WAMSGOAT</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#">Mice</a></li>
+        <li><a href="#">Mousepads</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>The guy<br>between you and<br><span class="accent">the perfect mouse.</span></h1>
+      <p class="lede">Long-term reviews of mice and pads. <br><br>No undisclosed sponsors. No bullshit.</p>
+      <div class="hero-actions">
+        <a href="#latest" class="btn btn-primary">Read the latest review</a>
+        <a href="#" class="btn btn-ghost">Browse by category</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>NOW TESTING: <b>PMM S2P 2.0</b> - FAST</span>
+    <span>UPDATED: <b>Hitscan Hyperlight</b> - One year later is still goated</span>
+    <span>NEW: <b>The Masterpiece Vortex v1</b> - Beautiful design and amazing performance</span>
+    <span>NOW TESTING: <b>PMM S2P 2.0</b> - 400 hr durability run</span>
+    <span>UPDATED: <b>Hitscan Hyperlight</b> - One year later is still goated</span>
+    <span>NEW: <b>The Masterpiece Vortex v1</b> - Beautiful design and amazing performance</span>
+  </div>
+</div>
+
+<main>
+  <section class="section" id="latest">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Featured Mouse</h2>
+      </div>
+
+      <article class="featured">
+        <div class="featured-body">
+          <div class="card-tags">
+            <span class="kc-tag">MOUSE</span>
+            <span class="kc-tag alt">WIRELESS</span>
+          </div>
+          <h3>Hitscan Hyperlight - The BEST 3395 mouse</h3>
+          <p>The perfect lightweigh, flat sided, symmetical gaming mouse. <br><br> But will the refresh be the same?</p>
+          
+          <div class="featured-footer">
+            <div class="score-badge">9</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Recent hating</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <span class="kc-tag">dwarf</span>
+            <span class="card-score">1/10</span>
+          </div>
+          <h3>Jomp</h3>
+          <p>bit silly</p>
+          <a href="#" class="card-read">Read review <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="kc-tag alt">dwarf</span>
+            <span class="card-score">1/10</span>
+          </div>
+          <h3>Escaroth</h3>
+          <p>unemployed and still bad at Geog</p>
+          <a href="#" class="card-read">Read review <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Wamsgoat.</span>
+    <span><a href="#">Contact</a> · <a href="#">Archive</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
