@@ -47,7 +47,7 @@
     .logo { font-family: var(--font-display); font-size: 1.15rem; color: var(--pink); }
     nav ul { list-style: none; display: flex; gap: 28px; font-size: 0.9rem; font-weight: 500; }
     nav a { color: var(--muted); transition: color 0.2s ease; }
-    nav a:hover { color: var(--pink); }
+    nav a:hover, nav a.active { color: var(--pink); }
 
     /* Hero */
     .hero { padding: 40px 0 32px; border-bottom: 1px solid var(--line); }
@@ -55,16 +55,45 @@
     h1 .accent { color: var(--pink); }
     p.lede { font-size: 1.05rem; color: var(--muted); max-width: 46ch; margin-bottom: 20px; }
 
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .btn {
       font-family: var(--font-mono); font-size: 0.82rem; padding: 10px 18px;
       border-radius: 4px; font-weight: 500; transition: all 0.2s ease;
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none;
     }
     .btn-primary { background: var(--pink); color: #2a1418; }
     .btn-primary:hover { transform: translateY(-2px); background: #f8c9d8; }
-    .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+    .btn-ghost { border: 1px solid var(--line); color: var(--text); background: transparent; }
     .btn-ghost:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-2px); }
+
+    /* Category Dropdown Menu */
+    .dropdown-wrap { position: relative; display: inline-block; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      min-width: 220px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      z-index: 50;
+      overflow: hidden;
+    }
+    .dropdown-menu.show { display: block; }
+    .dropdown-item {
+      display: block;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover { background: rgba(244, 184, 202, 0.12); color: var(--pink); }
 
     /* Sections & Cards */
     .section { padding: 32px 0; }
@@ -83,12 +112,11 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .card {
       background: var(--bg-surface); border: 1px solid var(--line); border-radius: 10px;
-      padding: 20px; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 24px; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease;
     }
     .card:hover { border-color: var(--pink-dim); transform: translateY(-3px); }
     .card h3 { font-family: var(--font-display); font-size: 1.05rem; margin: 8px 0 6px; }
-    .card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; flex: 1; }
-    .card-read { font-family: var(--font-mono); font-size: 0.78rem; color: var(--pink); }
+    .card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 18px; flex: 1; }
 
     /* Footer */
     footer { border-top: 1px solid var(--line); padding: 24px 0; margin-top: 20px; }
@@ -105,6 +133,7 @@
       <ul>
         <li><a href="mice.html">Mice</a></li>
         <li><a href="mousepads.html">Mousepads</a></li>
+        <li><a href="accessories.html">Accessories</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </nav>
@@ -115,14 +144,25 @@
   <div class="wrap">
     <h1>The guy<br>between you and the<br><span class="accent">perfect mouse.</span></h1>
     <p class="lede">Long-term reviews of mice and pads.<br><br>No undisclosed sponsors. No bullshit.</p>
+    
     <div class="hero-actions">
       <a href="#latest" class="btn btn-primary">Read latest review</a>
-      <a href="#" class="btn btn-ghost">Browse by category</a>
+      
+      <!-- Browse by Category Dropdown Menu -->
+      <div class="dropdown-wrap">
+        <button class="btn btn-ghost" id="cat-dropdown-btn">Browse by category &#9662;</button>
+        <div class="dropdown-menu" id="cat-dropdown-menu">
+          <a href="mice.html" class="dropdown-item">Mice Reviews &rarr;</a>
+          <a href="mousepads.html" class="dropdown-item">Mousepad Reviews &rarr;</a>
+          <a href="accessories.html" class="dropdown-item">Accessories & Skates &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <main class="wrap">
+  <!-- Featured Mouse Spotlight (Hitscan Hyperlight) -->
   <section class="section" id="latest">
     <div class="section-head">
       <h2>Featured Mouse</h2>
@@ -130,14 +170,15 @@
     <article class="featured">
       <div>
         <span class="tag">MOUSE</span>
-        <span class="tag alt">3D PRINTED</span>
+        <span class="tag alt">WIRELESS</span>
       </div>
-      <h3>PMM Zen 8k Mini — 31g Ultra Light</h3>
-      <p>Phenomenal lightweight alternative to the Viper v3 pro. Tested in Marvel Rivals, R6, and CSGO.<br><br>Read the full hands-on review.</p>
-      <a href="pmm-zen-8k-mini.html" class="btn btn-primary">Read full review</a>
+      <h3>Hitscan Hyperlight - The BEST 3395 mouse</h3>
+      <p>The perfect lightweight, flat sided, symmetrical gaming mouse.<br><br>But will the refresh be the same?</p>
+      <a href="#" class="btn btn-primary">Read full review</a>
     </article>
   </section>
 
+  <!-- Featured Mousepad Spotlight (PMM S2P 2.0) -->
   <section class="section">
     <div class="section-head">
       <h2>Featured Mousepad</h2>
@@ -149,27 +190,35 @@
       </div>
       <h3>PMM S2P 2.0 - The perfect cloth pad for glass lovers.</h3>
       <p>The perfect lightweight, flat sided, symmetrical gaming mouse.<br><br>But will the refresh be the same?</p>
-      <a href="#" class="btn btn-primary">Read full review</a>
+      <a href="mousepads.html" class="btn btn-primary">Read full review</a>
     </article>
   </section>
 
+  <!-- Category Exploration Cards Section (Replaces Recent Hating) -->
   <section class="section">
     <div class="section-head">
-      <h2>Recent hating</h2>
+      <h2>Explore Review Categories</h2>
     </div>
     <div class="grid">
       <article class="card">
-        <div><span class="tag">dwarf</span></div>
-        <h3>Jomp</h3>
-        <p>bit silly</p>
-        <a href="#" class="card-read">Read review &rarr;</a>
+        <div><span class="tag alt">HARDWARE</span></div>
+        <h3>Gaming Mice</h3>
+        <p>Sensors, switch latency, shapes and lightweight mod testing.</p>
+        <a href="mice.html" class="btn btn-primary">Browse Mice &rarr;</a>
       </article>
 
       <article class="card">
-        <div><span class="tag alt">dwarf</span></div>
-        <h3>Escaroth</h3>
-        <p>unemployed and still bad at Geog</p>
-        <a href="#" class="card-read">Read review &rarr;</a>
+        <div><span class="tag">SURFACES</span></div>
+        <h3>Mousepads</h3>
+        <p>Control, speed, glass and hybrid surface testing.</p>
+        <a href="mousepads.html" class="btn btn-primary">Browse Mousepads &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div><span class="tag alt">ACCESSORIES</span></div>
+        <h3>Skates & Sleeves</h3>
+        <p>PTFE/glass skates, arm compression sleeves and gear mods.</p>
+        <a href="accessories.html" class="btn btn-primary">Browse Accessories &rarr;</a>
       </article>
     </div>
   </section>
@@ -181,6 +230,22 @@
     <span><a href="#">Contact</a> · <a href="#">Archive</a></span>
   </div>
 </footer>
+
+<script>
+  const dropdownBtn = document.getElementById('cat-dropdown-btn');
+  const dropdownMenu = document.getElementById('cat-dropdown-menu');
+
+  if (dropdownBtn && dropdownMenu) {
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', () => {
+      dropdownMenu.classList.remove('show');
+    });
+  }
+</script>
 
 </body>
 </html>
