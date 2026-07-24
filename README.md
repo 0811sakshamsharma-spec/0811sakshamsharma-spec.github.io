@@ -1,1 +1,1 @@
-wamsgoat.github.io
+gaymers we are so winning rn
